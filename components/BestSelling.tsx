@@ -1,7 +1,6 @@
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "./ProductComponent/ProductsCard";
 import Container from "./Container";
 import { getProducts } from "../Lib/api/product";
-
 
 export default async function BestSelling() {
   const products = await getProducts();

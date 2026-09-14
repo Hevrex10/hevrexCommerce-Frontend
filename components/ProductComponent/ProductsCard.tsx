@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ProductsCardProps } from "../Type/Type";
+import type { ProductsCardProps } from "../../Type/Type";
 export default function ProductsCard({
   productName,
   src,
@@ -8,8 +8,9 @@ export default function ProductsCard({
   stock,
   id,
 }: ProductsCardProps) {
+  const stockStatus = stock ? "IN STOCK" : "Out of Stock";
   return (
-    <Link href={`/products/${id}`}>
+    <Link href={`/Products/${id}`}>
       <div className="flex w-[270px] shrink-0 flex-col items-start gap-6 rounded px-2 py-4">
         <div className="h-80 w-full overflow-hidden rounded bg-neutral-100">
           <Image
@@ -17,7 +18,7 @@ export default function ProductsCard({
             alt={productName}
             width={240}
             height={320}
-            className="h-80 w-full object-cover"
+            className="h-80  object-cover"
           />
         </div>
 
@@ -27,13 +28,12 @@ export default function ProductsCard({
           </p>
 
           <div className="flex items-center gap-4">
-            {/* Stock */}
             <div className="rounded-full px-4 py-0.5 outline outline-gray-200">
               <p
                 className={`text-xs font-medium capitalize leading-6 ${
-                  stock === "IN STOCK" ? "text-blue-600" : "text-red-700"
+                  stock ? "text-blue-600" : "text-red-700"
                 }`}>
-                {stock}
+                {stockStatus}
               </p>
             </div>
 

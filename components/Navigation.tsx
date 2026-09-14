@@ -25,8 +25,8 @@ export default function Navigation() {
               Home
             </Link>
             <div className="flex cursor-pointer items-center gap-1 hover:text-gray-900">
-              <Link href="/products"> Categories </Link>
-             <Image
+              <Link href="/Products"> Categories </Link>
+              <Image
                 src="/images/ChevronDown.png"
                 alt="Caret"
                 width={20}
@@ -55,7 +55,9 @@ export default function Navigation() {
               />
             </span>
             <div className="flex gap-5 items-center">
-              <button className="flex h-6 w-6 items-center justify-center relative">
+              <Link
+                href="/Cart"
+                className="flex h-6 w-6 items-center justify-center relative">
                 <Image
                   src="/images/Icon.png"
                   alt="Cart"
@@ -68,7 +70,7 @@ export default function Navigation() {
                     0
                   </p>
                 </div>
-              </button>
+              </Link>
               <button className="flex h-6 w-6 items-center justify-center">
                 <Image
                   src="/images/User.png"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "./ProductComponent/ProductsCard";
 import { Product } from "../Type/Type";
 
 type Props = {
