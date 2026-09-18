@@ -45,7 +45,7 @@ export default async function BestSelling() {
             {bestSelling.map((product) => (
               <ProductsCard
                 key={product._id}
-                id={Number(product._id)}
+                id={product._id}
                 stock={product.stock ? "IN STOCK" : "Out of Stock"}
                 productName={product.name}
                 src={product.image}

@@ -1,7 +1,7 @@
 import BestSelling from "@/components/BestSelling";
-import Hero from "../../components/Hero";
-import Service from "../../components/Service";
-import Browse from "../../components/Browse";
+import Hero from "@/components/Hero";
+import Service from "@/components/Service";
+import Browse from "@/components/Browse";
 import FeaturedandLatest from "@/components/FeaturedandLatest";
 
 export default function Page() {

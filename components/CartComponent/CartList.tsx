@@ -7,6 +7,7 @@ export default function CartList({
   color,
   handleDecrease,
   handleIncrease,
+  handleDelete,
 }: {
   name: string;
   price: number;
@@ -16,9 +17,10 @@ export default function CartList({
   color: string;
   handleDecrease: () => void;
   handleIncrease: () => void;
+  handleDelete: () => void;
 }) {
   return (
-    <div className="max-w-full flex-col sm:flex-col md:flex lg:flex-row items-center gap-3 sm:gap-5 lg:justify-between pt-4">
+    <div className="flex max-w-full flex-row md:flex-row md:items-center md:justify-between gap-3 sm:gap-5 pt-4">
       <div className="flex gap-3">
         <div className="max-w-20 w-full h-20 bg-neutral-100 rounded flex justify-center items-center">
           <img src={image} alt={name} />
@@ -55,8 +57,7 @@ export default function CartList({
         <div className="flex items-center justify-between max-w-24 w-full h-9 border border-gray-300 px-3">
           <button
             onClick={handleDecrease}
-            className="text-lg text-gray-700 font-semibold hover:text-gray-900"
-          >
+            className="text-lg text-gray-700 font-semibold hover:text-gray-900">
             -
           </button>
 
@@ -66,13 +67,14 @@ export default function CartList({
 
           <button
             onClick={handleIncrease}
-            className="text-lg text-gray-700 font-semibold hover:text-gray-900"
-          >
+            className="text-lg text-gray-700 font-semibold hover:text-gray-900">
             +
           </button>
         </div>
 
-        <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-[5px] cursor-pointer">
+        <div
+          onClick={handleDelete}
+          className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-[5px] cursor-pointer">
           x
         </div>
       </div>

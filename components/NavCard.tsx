@@ -19,7 +19,7 @@ export default function Navcard({
 
         <div className="flex items-center gap-1">
           <Link
-            href="/"
+            href="/Home"
             className="text-sm font-medium leading-6 text-gray-600 hover:text-gray-900">
             Ecommerce
           </Link>

@@ -1,8 +1,9 @@
 import { FaAngleDown, FaChevronRight } from "react-icons/fa";
-import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
 import { getProducts } from "../../Lib/api/product";
 import ProductsCard from "./ProductsCard";
 import Link from "next/link";
+import MobileFilter from "./MobileFilter";
 
 const categories = ["Perfume", "Trouser", "Shoe", "Handbag", "Hat"];
 
@@ -30,7 +31,7 @@ export default async function ProductList({
     sort,
     page,
   });
-  console.log(products[0]);
+  console.log(products);
   return (
     <main>
       <section className="bg-neutral-100 py-4">
@@ -63,7 +64,7 @@ export default async function ProductList({
                 {categories.map((item) => (
                   <Link
                     key={item}
-                    href={`/categories?category=${encodeURIComponent(item)}`}
+                    href={`/Products?category=${encodeURIComponent(item)}`}
                     className="flex cursor-pointer items-center gap-3 border-b border-gray-200 px-1 py-3">
                     <input
                       type="checkbox"
@@ -130,14 +131,7 @@ export default async function ProductList({
         </aside>
 
         <div className="w-full">
-          <div className="mb-6 flex items-center justify-between lg:hidden">
-            <button
-              type="button"
-              className="flex items-center gap-2 text-sm font-medium">
-              <RxHamburgerMenu className="text-xl" />
-              Filters
-            </button>
-          </div>
+          <MobileFilter category={category} />
 
           <div className="mb-6 flex flex-col gap-3">
             <p className="text-sm font-medium leading-6 text-black">
@@ -146,15 +140,15 @@ export default async function ProductList({
 
             {category && (
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="/categories"
+                <Link
+                  href="/Products"
                   className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-1">
                   <p className="text-xs font-medium leading-6 text-gray-900">
                     {category}
                   </p>
 
                   <RxCross2 className="text-gray-600" />
-                </a>
+                </Link>
               </div>
             )}
           </div>
@@ -172,17 +166,19 @@ export default async function ProductList({
           </div>
 
           {/* PRODUCT GRID */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {products.map((product) => (
-              <ProductsCard
-                key={product._id}
-                id={product._id}
-                productName={product.name}
-                price={product.price}
-                stock={product.stock}
-                src={product.image}
-              />
-            ))}
+          <div className="max-h-[600px] w-200 overflow-y-auto pr-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {products.map((product) => (
+                <ProductsCard
+                  key={product._id}
+                  id={product._id}
+                  productName={product.name}
+                  price={product.price}
+                  stock={product.stock}
+                  src={product.image}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -27,14 +27,13 @@ export interface Cart {
   quantity: number;
   size: string;
   color: string;
-  _id: string
 }
 
 export interface SignUp {
-  name: string
-  email: string
-  password: string|number
-  passwordConfirm: string|number
+  name: string;
+  email: string;
+  password: string | number;
+  passwordConfirm: string | number;
 }
 
 export interface Product {
@@ -53,3 +52,32 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CartProp {
+  _id: string;
+  product: Product;
+  quantity: number;
+  size: string;
+  color: string;
+}
+
+export type CreateOrderData = {
+  items: {
+    product: string;
+    quantity: number;
+    price: number;
+    size: string;
+    color: string;
+  }[];
+
+  totalPrice: number;
+
+  shippingAddress: {
+    fullName: string;
+    phone: string;
+    address: string;
+    city: string;
+    state: string;
+    country: string;
+  };
+};

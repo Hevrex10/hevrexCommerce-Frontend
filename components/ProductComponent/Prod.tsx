@@ -2,20 +2,19 @@
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import { IoMdStar } from "react-icons/io";
-import { Product } from "../../Type/Type";
+import { Product, Cart } from "../../Type/Type";
 import Image from "next/image";
 import Circle from "../Circle";
 import SizeOption from "../SizeOption";
-import Details from "../Details";
 import addToCart from "../../Lib/api/CartApi/cart";
-import SimilarProduct from "../SimilarProduct";
 
 export default function Prod({ product }: { product: Product }) {
   const { sizes, price, stock, colors, name, image, _id } = product;
-  const [selectedColor, setSelectedColor] = useState(colors?.[0] || "");
+  const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
-  const [liked, setLiked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [message, setMessage] = useState("");
 
   function increaseQuantity() {
     setQuantity((prev) => prev + 1);
@@ -25,15 +24,46 @@ export default function Prod({ product }: { product: Product }) {
     setQuantity((prev) => Math.max(1, prev - 1));
   }
 
-  function cart() {
-    const cart = {
+  async function cart() {
+    if (!selectedColor) {
+      setMessage("Please select a color");
+      return;
+    }
+
+    if (!selectedSize) {
+      setMessage("Please select a size");
+      return;
+    }
+    setIsLoading(true);
+
+    const cart: Cart = {
       product: _id,
       quantity,
       size: selectedSize,
       color: selectedColor,
     };
 
-    addToCart(cart);
+    try {
+      await addToCart(cart);
+      setMessage("Added to cart successfully");
+      setQuantity(1);
+      setSelectedColor("");
+      setSelectedSize("");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+
+      setMessage("Failed to add to cart");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -136,19 +166,23 @@ export default function Prod({ product }: { product: Product }) {
         {/* CART / WISHLIST */}
         <div className="flex flex-col gap-3">
           <div className="flex gap-4">
-            <button className="flex w-72 items-center justify-center rounded bg-gray-900 px-6 py-3">
-              <p className="text-sm font-medium text-white" onClick={cart}>
-                Add to cart
-              </p>
+            <button
+              onClick={cart}
+              className="flex w-72 items-center justify-center rounded bg-gray-900 hover:bg-gray-800 px-6 py-3 cursor-pointer">
+              {isLoading ? (
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+              ) : (
+                <p className="text-sm font-medium text-white">Add to cart</p>
+              )}
             </button>
 
-            <button className="transition-colors">
+            {/* <button className="transition-colors">
               {liked ? (
                 <FaHeart className="text-xl text-red-500" />
               ) : (
                 <FaRegHeart className="text-xl text-gray-400 hover:text-red-500" />
               )}
-            </button>
+            </button> */}
           </div>
 
           <p className="text-xs font-medium uppercase text-gray-600">
@@ -156,11 +190,9 @@ export default function Prod({ product }: { product: Product }) {
           </p>
 
           <div className="flex flex-col gap-1">
-            <p className="text-xs font-medium uppercase text-blue-600">{}</p>
-
-            <p className="text-xs font-medium uppercase text-red-600">{}</p>
-
-            {/* {showNotification && <NotificationCard text="Added to cart" />} */}
+            {message && (
+              <p className="text-sm font-medium text-green-600">{message}</p>
+            )}
           </div>
         </div>
       </div>

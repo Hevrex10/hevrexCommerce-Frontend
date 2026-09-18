@@ -13,6 +13,8 @@ export default async function forgotPassword(email: string) {
     },
   );
   const data = await response.json();
+  console.log("Status:", response.status);
+  console.log("Response:", data);
   if (!response.ok) {
     throw new Error(data.message || "Login failed");
   }

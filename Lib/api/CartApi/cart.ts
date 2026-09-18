@@ -29,8 +29,6 @@ export default async function addToCart({
     }
 
     const data = await response.json();
-
-    console.log("Added to cart:", data);
   } catch (error) {
     console.log("Error adding to cart:", error);
   }

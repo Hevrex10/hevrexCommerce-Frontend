@@ -16,7 +16,7 @@ export default async function Page({
       <ProductList
         category={params.category}
         sort={params.sort}
-        page={params.page}
+        page={Number(params.page) || 1}
       />
     </div>
   );

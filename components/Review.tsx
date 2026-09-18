@@ -4,7 +4,6 @@ import ReviewCard from "./ReviewCard";
 
 export default function Review({ product }: { product: Product }) {
   const reviews = product.reviews ?? [];
-   console.log(reviews)
   return (
     <div className="flex w-full max-w-3xl flex-col gap-6">
       {/* Review summary */}

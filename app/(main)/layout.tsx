@@ -9,6 +9,10 @@ export default function MainLayout({
 }) {
   return (
     <>
+      <header>
+        <AnouncementBar />
+        <Navigation />
+      </header>
       <main className="flex-1">{children}</main>
     </>
   );

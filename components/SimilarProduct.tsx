@@ -12,16 +12,17 @@ export default async function SimilarProduct() {
         SIMILAR PRODUCTS
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 flex gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
         {products.slice(0, 4).map((p: Product) => (
-          <ProductsCard
-            key={p._id}
-            productName={p.name}
-            id={p._id}
-            src={p.image}
-            price={p.price}
-            stock={p.stock ? "INSTOCK" : "OUT OF STOCK"}
-          />
+          <div key={p._id} className="w-[calc(50%-8px)] shrink-0 sm:w-auto">
+            <ProductsCard
+              productName={p.name}
+              id={p._id}
+              src={p.image}
+              price={p.price}
+              stock={p.stock ? "INSTOCK" : "OUT OF STOCK"}
+            />
+          </div>
         ))}
       </div>
     </section>

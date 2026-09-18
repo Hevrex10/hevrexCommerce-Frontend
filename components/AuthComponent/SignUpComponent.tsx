@@ -5,10 +5,19 @@ import Link from "next/link";
 import ButtonCard from "@/components/ButtonCard";
 import Form from "@/components/Form";
 import signup from "../../Lib/api/AuthApi/signup";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import LoginUser from "@/Lib/api/AuthApi/login";
 
 export default function SignUpComponent() {
+  const [isError, setIsError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsLoading(true);
+
     const form = event.currentTarget;
     const formData = new FormData(form);
 
@@ -19,8 +28,13 @@ export default function SignUpComponent() {
 
     try {
       await signup({ name, email, password, passwordConfirm });
+      await LoginUser({ email, password });
+      router.push("/Home");
+      form.reset();
     } catch (error) {
-      throw error
+      setIsError(error instanceof Error ? error.message : "Error signing up");
+    } finally {
+      setIsLoading(false);
     }
     form.reset();
   }
@@ -33,11 +47,11 @@ export default function SignUpComponent() {
         path="Sign up">
         <InputCard name="name" type="name" text="Name" />
         <InputCard name="email" type="email" text="Email Address" />
-        <InputCard name="password" type="password" text="password" />
+        <InputCard name="password" type="password" text="Password" />
         <InputCard
           name="passwordConfirm"
           type="password"
-          text="passwordConfirm"
+          text="Confirm Password"
         />
         <div className="flex w-full flex-col gap-4">
           <div className="flex w-full justify-end">
@@ -47,13 +61,14 @@ export default function SignUpComponent() {
             </p>
           </div>
 
-          <ButtonCard text="Sign up" />
+          <ButtonCard text="Sign up" isLoading={isLoading} />
         </div>
         <Link
           href="/Login"
           className="text-sm leading-6 font-normal text-gray-600">
           Already have an account ? Log in
         </Link>
+        {isError && <p className="text-sm text-red-500">{isError}</p>}
       </Form>
     </>
   );
