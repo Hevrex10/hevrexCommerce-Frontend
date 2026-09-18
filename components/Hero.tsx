@@ -19,7 +19,7 @@ export default function Hero() {
             </div>
 
             <Link
-              href="/products"
+              href="/Products"
               className="rounded-md bg-gray-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800">
               View Collection
             </Link>
