@@ -1,4 +1,4 @@
-import { SignUp } from "../../../../Type/Type";
+import { SignUp } from "../../../Type/Type";
 export default async function signup({
   name,
   email,

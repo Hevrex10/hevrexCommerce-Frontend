@@ -4,7 +4,7 @@ import Link from "next/link";
 import InputCard from "../InputCard";
 import ButtonCard from "../ButtonCard";
 import Form from "../Form";
-import LoginUser from "@/Lib/loginUser";
+import loginUser from "@/app/api/AuthApi/loginUser";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "../Loader";
@@ -28,7 +28,7 @@ export default function LoginComponent() {
       setIsLoading(true);
 
       setIsError("");
-      await LoginUser({ email, password });
+      await loginUser({ email, password });
       router.push("/Home");
       form.reset();
     } catch (error) {

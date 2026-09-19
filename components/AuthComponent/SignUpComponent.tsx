@@ -4,10 +4,10 @@ import InputCard from "../../components/InputCard";
 import Link from "next/link";
 import ButtonCard from "@/components/ButtonCard";
 import Form from "@/components/Form";
-import signup from "../../app/api/AuthApi/signup/route";
+import signup from "../../app/api/AuthApi/signup";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import LoginUser from "@/Lib/loginUser";
+import loginUser from "@/app/api/AuthApi/loginUser";
 
 export default function SignUpComponent() {
   const [isError, setIsError] = useState("");
@@ -28,7 +28,7 @@ export default function SignUpComponent() {
 
     try {
       await signup({ name, email, password, passwordConfirm });
-      await LoginUser({ email, password });
+      await loginUser({ email, password });
       router.push("/Home");
       form.reset();
     } catch (error) {

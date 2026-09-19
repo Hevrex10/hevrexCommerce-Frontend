@@ -3,7 +3,7 @@
 import InputCard from "../InputCard";
 import ButtonCard from "../ButtonCard";
 import Form from "@/components/Form";
-import forgotPassword from "@/app/api/AuthApi/forgotPassword/route";
+import forgotPassword from "@/app/api/AuthApi/forgotPassword";
 import { useState, useEffect } from "react";
 
 export default function ForgotPasswordComponent() {

@@ -1,4 +1,4 @@
-import { Cart } from "../../../../Type/Type";
+import { Cart } from "../../../Type/Type";
 
 export default async function addToCart({
   product,

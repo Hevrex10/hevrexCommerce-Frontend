@@ -1,6 +1,6 @@
 import ProductsCard from "./ProductComponent/ProductsCard";
 import Container from "./Container";
-import { getProducts } from "@/app/api/AuthApi/product/route";
+import { getProducts } from "@/app/api/AuthApi/getProduct";
 
 export default async function BestSelling() {
   const products = await getProducts();

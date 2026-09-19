@@ -16,7 +16,7 @@ export default function ResetPasswordComponent() {
     const passwordConfirm = formData.get("passwordConfirm") as string;
 
     // try {
-    //   await LoginUser({ email, password });
+    //   await loginUser({ email, password });
     //   form.reset();
     // } catch (error) {
     //   setIsError(error instanceof Error ? error.message : "Login failed");
