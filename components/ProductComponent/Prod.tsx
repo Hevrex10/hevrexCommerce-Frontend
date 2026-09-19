@@ -6,7 +6,7 @@ import { Product, Cart } from "../../Type/Type";
 import Image from "next/image";
 import Circle from "../Circle";
 import SizeOption from "../SizeOption";
-import addToCart from "../../Lib/api/CartApi/cart";
+import addToCart from "../../Lib/api/CartApi/cart/route";
 
 export default function Prod({ product }: { product: Product }) {
   const { sizes, price, stock, colors, name, image, _id } = product;

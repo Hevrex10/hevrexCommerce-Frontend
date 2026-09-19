@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getProduct } from "../../../../Lib/api/product";
+import { getProduct } from "@/Lib/api/AuthApi/product/route"
 import { FaAngleRight } from "react-icons/fa";
 import ProductInfo from "../../../../components/ProductComponent/ProductInfo";
 

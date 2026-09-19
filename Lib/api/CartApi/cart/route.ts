@@ -1,4 +1,4 @@
-import { Cart } from "../../../Type/Type";
+import { Cart } from "../../../../Type/Type";
 
 export default async function addToCart({
   product,
@@ -29,7 +29,6 @@ export default async function addToCart({
     if (!response.ok) {
       throw new Error(data.message || "Failed to add product to cart");
     }
-
   } catch (error) {
     console.log("Error adding to cart:", error);
   }

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Navcard from "../NavCard";
 import Link from "next/link";
 import OrderSummary from "../OrderSummary";
-import getCart from "../../Lib/api/CartApi/getCart";
+import getCart from "../../Lib/api/CartApi/getCart/route";
 import { Product, CartProp } from "../../Type/Type";
 import CartList from "./CartList";
-import updateCartQuantity from "@/Lib/api/CartApi/updateCartQuantity";
+import updateCartQuantity from "@/Lib/api/CartApi/updateCartQuantity/route";
 import CartLoader from "./CartLoader";
-import removeFromCart from "@/Lib/api/CartApi/deleteCart";
+import removeFromCart from "@/Lib/api/CartApi/deleteCart/route";
 
 export default function YourCart({
   loading,

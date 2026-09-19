@@ -2,8 +2,7 @@
 import InputCard from "../InputCard";
 import ButtonCard from "../ButtonCard";
 import Form from "@/components/Form";
-import forgotPassword from "@/Lib/api/AuthApi/forgotPassword";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ResetPasswordComponent() {
   const [isError, setIsError] = useState("");

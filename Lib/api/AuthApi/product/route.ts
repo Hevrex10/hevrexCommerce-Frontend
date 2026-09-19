@@ -1,4 +1,4 @@
-import type { Product } from "../../Type/Type";
+import type { Product } from "../../../../Type/Type";
 
 interface ProductFilters {
   category?: string;

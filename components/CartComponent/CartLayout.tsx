@@ -6,7 +6,7 @@ import { CartProp } from "../../Type/Type";
 import ShippingAddress from "../ShippingAddress";
 import YourCart from "./YourCart";
 import { createOrder } from "@/Lib/api/OrderApi/order";
-import clearCart from "@/Lib/api/CartApi/clearCart";
+import clearCart from "@/Lib/api/CartApi/cleartCart/route";
 import OrderSuccess from "../Order/OrderSuccess";
 import OrderFailed from "../Order/OrderFailed";
 

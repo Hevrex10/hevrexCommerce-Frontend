@@ -4,7 +4,7 @@ import Link from "next/link";
 import InputCard from "../InputCard";
 import ButtonCard from "../ButtonCard";
 import Form from "../Form";
-import LoginUser from "@/Lib/api/AuthApi/login";
+import LoginUser from "@/Lib/api/AuthApi/login/route";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "../Loader";
