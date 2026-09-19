@@ -1,6 +1,6 @@
 import { FaAngleDown, FaChevronRight } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { getProducts } from "../../Lib/api/AuthApi/product/route";
+import { getProducts } from "../../app/api/AuthApi/product/route";
 import ProductsCard from "./ProductsCard";
 import Link from "next/link";
 import MobileFilter from "./MobileFilter";

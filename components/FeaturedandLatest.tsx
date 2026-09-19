@@ -1,4 +1,4 @@
-import { getProducts } from "../Lib/api/AuthApi/product/route";
+import { getProducts } from "../app/api/AuthApi/product/route";
 import Container from "./Container";
 import FeaturedLatestTabs from "./FeaturedLatestTab";
 

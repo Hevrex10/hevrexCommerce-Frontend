@@ -1,5 +1,5 @@
 "use client";
-import { getOrders } from "@/Lib/api/OrderApi/order";
+import { getOrders } from "@/app/api/OrderApi/order";
 import { useEffect, useState } from "react";
 import ListCard from "@/components/ListCard";
 import CartLoader from "../CartComponent/CartLoader";

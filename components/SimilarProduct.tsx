@@ -1,5 +1,5 @@
 import ProductsCard from "./ProductComponent/ProductsCard";
-import { getProducts } from "../Lib/api/AuthApi/product/route";
+import { getProducts } from "../app/api/AuthApi/product/route";
 import { Product } from "../Type/Type";
 
 export default async function SimilarProduct() {

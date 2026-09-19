@@ -5,11 +5,10 @@ import OrderSummary from "../OrderSummary";
 import { CartProp } from "../../Type/Type";
 import ShippingAddress from "../ShippingAddress";
 import YourCart from "./YourCart";
-import { createOrder } from "@/Lib/api/OrderApi/order";
-import clearCart from "@/Lib/api/CartApi/cleartCart/route";
+import { createOrder } from "@/app/api/OrderApi/order";
+import clearCart from "@/app/api/CartApi/cleartCart/route";
 import OrderSuccess from "../Order/OrderSuccess";
 import OrderFailed from "../Order/OrderFailed";
-
 
 type ShippingData = {
   name: string;
@@ -35,8 +34,8 @@ export default function CartLayout() {
     city: "",
     country: "",
   });
-   
-  const cartLength = cart.length === 0
+
+  const cartLength = cart.length === 0;
   const subTotal = cart.reduce(
     (total, item) => total + item.product.price * item.quantity,
     0,

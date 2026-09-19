@@ -6,7 +6,7 @@ import { IoHeartOutline } from "react-icons/io5";
 import { PiTruckBold } from "react-icons/pi";
 import { FiKey } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
-import logout from "@/Lib/api/AuthApi/logout/route";
+import logout from "@/app/api/AuthApi/logout/route";
 import { useRouter } from "next/navigation";
 export default function AccountList({
   isOpen,
