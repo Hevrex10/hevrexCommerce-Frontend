@@ -12,7 +12,6 @@ export default async function signup({
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
       body: JSON.stringify({
         name,
         email,
