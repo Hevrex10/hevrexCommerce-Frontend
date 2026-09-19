@@ -24,11 +24,12 @@ export default async function addToCart({
       },
     );
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error("Failed to add product to cart");
+      throw new Error(data.message || "Failed to add product to cart");
     }
 
-    const data = await response.json();
   } catch (error) {
     console.log("Error adding to cart:", error);
   }
