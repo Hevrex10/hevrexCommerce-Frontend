@@ -1,9 +1,12 @@
 export default async function getCart() {
+  const token = localStorage.getItem("token");
   const response = await fetch(
     "https://rexcommerce.onrender.com/api/v1/carts",
     {
       method: "GET",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   );
   const data = await response.json();

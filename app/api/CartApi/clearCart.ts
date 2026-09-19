@@ -1,9 +1,13 @@
 export default async function clearCart() {
+  const token = localStorage.getItem("token");
+
   const response = await fetch(
     "https://rexcommerce.onrender.com/api/v1/carts",
     {
       method: "DELETE",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   );
 

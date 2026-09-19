@@ -2,14 +2,16 @@ export default async function updateCartQuantity(
   productId: string,
   quantity: number,
 ) {
+  const token = localStorage.getItem("token");
+
   const response = await fetch(
     `https://rexcommerce.onrender.com/api/v1/carts/${productId}`,
     {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      credentials: "include",
       body: JSON.stringify({
         quantity,
       }),

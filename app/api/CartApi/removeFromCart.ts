@@ -1,10 +1,14 @@
 export default async function removeFromCart(cartItemId: string) {
+  const token = localStorage.getItem("token");
+
   try {
     const response = await fetch(
       `https://rexcommerce.onrender.com/api/v1/carts/${cartItemId}`,
       {
         method: "DELETE",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
     );
 
