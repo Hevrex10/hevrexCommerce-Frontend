@@ -6,7 +6,7 @@ import Navcard from "@/components/NavCard";
 import AccountList from "@/components/AccountList";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <>
