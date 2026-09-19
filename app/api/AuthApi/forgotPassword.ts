@@ -6,7 +6,6 @@ export default async function forgotPassword(email: string) {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
       body: JSON.stringify({
         email,
       }),
