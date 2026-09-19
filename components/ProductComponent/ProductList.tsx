@@ -164,9 +164,8 @@ export default async function ProductList({
             </button>
           </div>
 
-          {/* PRODUCT GRID */}
-          <div className="max-h-[600px] w-200 overflow-y-auto pr-2">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="w-full overflow-hidden">
+            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               {products.map((product) => (
                 <ProductsCard
                   key={product._id}
