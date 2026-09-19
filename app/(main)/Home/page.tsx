@@ -6,12 +6,14 @@ import FeaturedandLatest from "@/components/FeaturedandLatest";
 
 export default function Page() {
   return (
-    <main>
-      <Hero />
-      <Service />
-      <BestSelling />
-      <Browse />
-      <FeaturedandLatest />
-    </main>
+    <>
+      <main>
+        <Hero />
+        <Service />
+        <BestSelling />
+        <Browse />
+        <FeaturedandLatest />
+      </main>
+    </>
   );
 }

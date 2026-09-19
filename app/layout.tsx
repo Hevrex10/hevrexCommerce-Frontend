@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navigation from "../components/Navigation";
-import AnouncementBar from "../components/AnnouncementBar";
 import Footer from "../components/Footer";
 import "./globals.css";
 import ReduxProvider from "@/Lib/redux/Provider";
