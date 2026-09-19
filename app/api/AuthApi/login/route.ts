@@ -15,6 +15,7 @@ export async function POST(req: Request) {
   );
 
   const data = await response.json();
+  console.log("TOKEN:", data.token);
 
   if (!response.ok) {
     return NextResponse.json(data, { status: response.status });
@@ -23,6 +24,7 @@ export async function POST(req: Request) {
   const res = NextResponse.json({
     status: data.status,
   });
+  console.log("SETTING COOKIE:", !!data.token);
 
   if (data.token) {
     res.cookies.set("jwt", data.token, {
