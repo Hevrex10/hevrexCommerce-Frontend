@@ -3,9 +3,8 @@
 import InputCard from "../InputCard";
 import ButtonCard from "../ButtonCard";
 import Form from "@/components/Form";
-import forgotPassword from "@/app/api/AuthApi/forgorPassword/route";
+import forgotPassword from "@/app/api/AuthApi/forgotPassword/route";
 import { useState, useEffect } from "react";
-import Loader from "../Loader";
 
 export default function ForgotPasswordComponent() {
   const [isError, setIsError] = useState("");
