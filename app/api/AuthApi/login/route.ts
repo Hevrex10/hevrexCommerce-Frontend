@@ -20,10 +20,10 @@ export async function POST(req: Request) {
     return NextResponse.json(data, { status: response.status });
   }
 
-  // Create response that will be sent to the browser
-  const res = NextResponse.json(data);
+  const res = NextResponse.json({
+    status: data.status,
+  });
 
-  // Set the cookie on YOUR domain (this is the important part)
   if (data.token) {
     res.cookies.set("jwt", data.token, {
       httpOnly: true,
