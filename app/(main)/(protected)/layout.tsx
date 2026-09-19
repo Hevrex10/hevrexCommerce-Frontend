@@ -1,16 +1,35 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+"use client";
 
-export default async function ProtectedLayout({
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import protect from "@/app/api/Protect/protect";
+import Loader from "@/components/Loader";
+
+export default function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies();
-  const jwt = cookieStore.get("jwt");
+  const router = useRouter();
+  const [isChecking, setIsChecking] = useState(true);
 
-  if (!jwt) {
-    redirect("/Login");
+  useEffect(() => {
+    async function checkAuth() {
+      const user = await protect();
+
+      if (!user) {
+        router.replace("/Login");
+        return;
+      }
+
+      setIsChecking(false);
+    }
+
+    checkAuth();
+  }, [router]);
+
+  if (isChecking) {
+    return <Loader />;
   }
 
   return <>{children}</>;

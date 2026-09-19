@@ -28,7 +28,8 @@ export default function LoginComponent() {
       setIsLoading(true);
 
       setIsError("");
-      await loginUser({ email, password });
+      const data = await loginUser({ email, password });
+      localStorage.setItem("token", data.token);
       router.push("/Home");
       form.reset();
     } catch (error) {

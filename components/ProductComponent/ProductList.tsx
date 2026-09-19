@@ -31,7 +31,6 @@ export default async function ProductList({
     sort,
     page,
   });
-  console.log(products);
   return (
     <main>
       <section className="bg-neutral-100 py-4">
