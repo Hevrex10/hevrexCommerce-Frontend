@@ -1,9 +1,8 @@
-interface Login {
-  email: string;
-  password: string | number;
-}
+import { NextResponse } from "next/server";
 
-export default async function LoginUser({ email, password }: Login) {
+export async function POST(req: Request) {
+  const body = await req.json();
+
   const response = await fetch(
     "https://rexcommerce.onrender.com/api/v1/users/login",
     {
@@ -11,16 +10,29 @@ export default async function LoginUser({ email, password }: Login) {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify(body),
     },
   );
+
   const data = await response.json();
+
   if (!response.ok) {
-    throw new Error(data.message || "Login failed");
+    return NextResponse.json(data, { status: response.status });
   }
-  return data;
+
+  // Create response that will be sent to the browser
+  const res = NextResponse.json(data);
+
+  // Set the cookie on YOUR domain (this is the important part)
+  if (data.token) {
+    res.cookies.set("jwt", data.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    });
+  }
+
+  return res;
 }

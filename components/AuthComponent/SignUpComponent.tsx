@@ -7,7 +7,7 @@ import Form from "@/components/Form";
 import signup from "../../Lib/api/AuthApi/signup/route";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import LoginUser from "@/Lib/api/AuthApi/login/route";
+import LoginUser from "@/Lib/api/AuthApi/login/page";
 
 export default function SignUpComponent() {
   const [isError, setIsError] = useState("");
