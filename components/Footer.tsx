@@ -17,24 +17,11 @@ const newsletterHiddenPaths = [
   "/order-success",
   "/order-error",
 ];
-const footerHiddenPaths = [
-  "/admin",
-  "/admin/products",
-  "/admin/orders",
-  "/admin/customers",
-  "/admin/reviews",
-  "/admin/settings",
-  "/admin/dashboard",
-  "/admin-login",
-  "/admin/add-products",
-];
 
 export default function Footer() {
   const pathname = usePathname();
   const hideNewsletter = newsletterHiddenPaths.includes(pathname);
-  const hideFooter =
-    footerHiddenPaths.includes(pathname) ||
-    pathname.startsWith("/admin/edit-product/");
+  const hideFooter = pathname.startsWith("/Admin");
   if (hideFooter) {
     return null;
   }

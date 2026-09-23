@@ -61,6 +61,34 @@ export interface CartProp {
   color: string;
 }
 
+export interface Order {
+  _id: string;
+  user: string;
+  items: [
+    {
+      product: string;
+      quantity: 3;
+      price: number;
+      size: string;
+      color: string;
+    },
+  ];
+  totalPrice: number;
+  shippingAddress: {
+    fullName: string;
+    phone: number;
+    address: string;
+    city: string;
+    state: string;
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type CreateOrderData = {
   items: {
     product: string;

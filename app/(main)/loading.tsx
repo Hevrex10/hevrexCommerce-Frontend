@@ -1,7 +1,5 @@
-import Loader from '@/components/Loader'
+import Loader from "@/components/Loader";
 
 export default function loading() {
-  return (
-    <Loader/>
-  )
+  return <Loader />;
 }
