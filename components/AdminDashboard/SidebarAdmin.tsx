@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import logout from "@/app/api/AuthApi/logout";
+
 import {
   LayoutDashboard,
   Package,
@@ -11,6 +14,7 @@ import {
   Star,
   Settings,
   Plus,
+  LogOut,
 } from "lucide-react";
 
 const mainLinks = [
@@ -48,12 +52,20 @@ const mainLinks = [
 
 export default function SidebarAdmin() {
   const pathname = usePathname();
-
+  const router = useRouter();
+  async function handleLogout() {
+    try {
+      await logout();
+      router.push("/Admin/Login");
+    } catch (error) {
+      throw error;
+    }
+  }
   return (
     <aside className="flex min-h-screen w-[255px] flex-col border-r border-gray-200 bg-white">
       <div className="flex h-[95px] items-center px-[45px]">
         <Link href="/">
-          <Image src="/images/Admin.png" alt="Logo" width={120} height={120}  />
+          <Image src="/images/Admin.png" alt="Logo" width={120} height={120} />
         </Link>
       </div>
 
@@ -80,6 +92,13 @@ export default function SidebarAdmin() {
             );
           })}
         </div>
+        <button
+          onClick={handleLogout}
+          className="flex h-[41px] items-center rounded-lg px-[26px] text-[15px] text-[#626775] hover:bg-gray-50 mt-5">
+          <LogOut size={20} strokeWidth={1.7} className="mr-[14px]" />
+
+          <span>Logout</span>
+        </button>
       </nav>
 
       <div className="mt-[40px] border-t border-gray-200 px-[19px] pt-[39px]">
