@@ -48,36 +48,21 @@ const mainLinks = [
 
 export default function SidebarAdmin() {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <aside className="flex min-h-screen w-[255px] flex-col border-r border-gray-200 bg-white">
       <div className="flex h-[95px] items-center px-[45px]">
         <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={36}
-            height={36}
-            className="h-9 w-auto"
-          />
+          <Image src="/images/Admin.png" alt="Logo" width={120} height={120}  />
         </Link>
-
-        <span className="ml-3 text-[20px] font-semibold text-[#111827]">
-          Admin
-        </span>
       </div>
 
       <nav className="px-[19px] pt-[17px]">
         <div className="space-y-[14px]">
           {mainLinks.map((link) => {
             const Icon = link.icon;
-            const isActive =
-              `/Admin/${link.name.charAt(0).toLowerCase() + link.name.slice(1)}` ===
-              pathname;
-            console.log(
-              "LINK",
-              `/Admin/${link.name.charAt(0).toLowerCase() + link.name.slice(1)}`,
-            );
+
+            const isActive = pathname === link.href;
 
             return (
               <Link

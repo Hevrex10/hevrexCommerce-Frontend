@@ -39,14 +39,7 @@ export default function AdminLogin() {
     <div className="min-h-screen w-full flex items-center justify-center bg-[#f8fafc]">
       <div className="w-full max-w-[420px] bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 mx-4">
         <div className="flex justify-center mb-10">
-          <Image
-            src="/image.png" // ← replace with your real logo path
-            alt="Admin Logo"
-            width={140}
-            height={40}
-            className="object-contain"
-            priority
-          />
+          <Image src="/images/Admin.png" alt="Logo" width={120} height={120} />
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
